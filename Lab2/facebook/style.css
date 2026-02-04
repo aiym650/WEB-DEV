@@ -55,6 +55,9 @@ body {
     text-decoration: none;
     font-size: 12px;
 }
+.forgot:hover {
+    text-decoration: underline;
+}
 .line {
      margin-top: 10px;
     margin-bottom: 10px;
@@ -130,6 +133,10 @@ footer {
     text-decoration: none;
     font-size: smaller;
     color: grey;
+}
+.footer-links a:hover,
+.languages a:hover{
+    text-decoration: underline;
 }
 .words {
     font-size: 25px;
