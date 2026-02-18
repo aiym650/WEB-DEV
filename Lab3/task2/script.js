@@ -2,14 +2,12 @@ const taskInput = document.getElementById("taskInput");
 const addBtn = document.getElementById("addBtn");
 const listEl = document.getElementById("list");
 
-let tasks = loadTasks(); // [{id, text, done}]
+let tasks = loadTasks();
 
 render();
 
-// Добавить по кнопке
 addBtn.addEventListener("click", addTask);
 
-// Добавить по Enter
 taskInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") addTask();
 });
@@ -35,7 +33,6 @@ function toggleDone(id) {
   render();
 }
 
-// Удаляем ТОЛЬКО если done === true
 function deleteTask(id) {
   tasks = tasks.filter(t => t.id !== id);
   saveTasks();
@@ -49,7 +46,6 @@ function render() {
     const li = document.createElement("li");
     li.className = "item";
 
-    // checkbox
     const check = document.createElement("div");
     check.className = "check";
 
@@ -59,12 +55,11 @@ function render() {
     cb.addEventListener("change", () => toggleDone(task.id));
     check.appendChild(cb);
 
-    // text
+    
     const text = document.createElement("div");
     text.className = "text" + (task.done ? " done" : "");
     text.textContent = task.text;
 
-    // trash
     const trash = document.createElement("div");
     trash.className = "trash";
 
@@ -84,8 +79,7 @@ function render() {
     listEl.appendChild(li);
   });
 
-  // Если пусто — можешь оставить пустым как на примерах,
-  // либо добавить подсказку (но я оставил пустым).
+  
 }
 
 function saveTasks() {
@@ -96,7 +90,7 @@ function loadTasks() {
   try {
     const raw = localStorage.getItem("todo_tasks");
     if (!raw) {
-      // стартовые задачи как на скрине
+      
       return [
         { id: crypto.randomUUID(), text: "First item", done: true },
         { id: crypto.randomUUID(), text: "Second item", done: false },
